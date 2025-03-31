@@ -1,7 +1,5 @@
-import json
 import re
-from dataclasses import dataclass, field
-from typing import Dict, List, Tuple
+from typing import List, Tuple
 
 from loguru import logger
 
@@ -85,7 +83,7 @@ def _is_command(s: str) -> bool:
     return s != "" and not bool(re.search("^ *#", s))
 
 
-def _get_command_line_idx(lines: List[str]) -> List[int]:
+def _get_command_line_idx(lines: [str]) -> List[int]:
     line_types = [_is_command(line) for line in lines]
     return [i for i, is_command_line in enumerate(line_types) if is_command_line]
 
